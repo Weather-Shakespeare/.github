@@ -90,6 +90,9 @@
   2. 各縣市一般廢棄物回收率
   3. 公告列管材質回收率
 
+### The Tech we will use
+
+[[VIEW `developing_note.md` ]](./developing_note.md)
 
 ### Potential Problem 
 
