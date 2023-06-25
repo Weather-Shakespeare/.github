@@ -44,18 +44,18 @@ img = cv.imread('../Resources/Photos/cats.jpg')
 # 注意 kernel size必須是奇數(odd)，kernel size越大越模糊。
 # 模糊化也有許多不同的方法可以進行，讓 kernel依據需求進行運算。
 blur = cv.GaussianBlur(img, (7,7), cv.BORDER_DEFAULT)
-cv.imshow(‘Blur Cats’, blur)
+cv.imshow('Blur Cats', blur)
 # 輪廓化(edge cascade)
 # 小技巧，可以先將圖片模糊化，再進行輪廓化，可以抓到比較少雜訊。
 canny = cv.Canny(blur, 125, 175)
-cv.imshow(‘Canny Cats’, canny)
+cv.imshow('Canny Cats', canny)
 # 注意膨脹、侵蝕用的照片是已經輪廓化處理過。雜訊會較少。
 # 膨脹 dilating
 dilated = cv.dilate(canny, (7,7), iterations=3)
-cv.imshow(‘Dilated’, dilated)
+cv.imshow('Dilated', dilated)
 # 侵蝕 eroding
 eroded = cv.erode(canny, (3,3), iterations=1)
-cv.imshow(‘Eroded’, eroded)
+cv.imshow('Eroded', eroded)
 cv.waitKey(0)
 ```
 
@@ -76,9 +76,9 @@ if rotPoint is None:
 return cv.warpAffine(img, rotMat, dimensions)
 # 輸入角度作為參數
 rotated = rotate(img, -45)
-cv.imshow(‘Rotated’, rotated)
+cv.imshow('Rotated', rotated)
 rotated_rotated = rotate(img, -90)
-cv.imshow(‘Rotated Rotated’, rotated_rotated)
+cv.imshow('Rotated Rotated', rotated_rotated)
 ```
 
 ##### 圖像結構
@@ -96,13 +96,13 @@ canny = cv.Canny(blur, 125, 175)
 
 contours, hierarchies = cv.findContours(canny, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
 # 計算總共有幾個輪廓 contours
-print(f’{len(contours)} contour(s) found!’)
+print(f'{len(contours)} contour(s) found!')
 # 畫出當前所有的 contours
 cv.drawContours(img, contours, -1, (255,0,0), 1)
-cv.imshow(‘Contours Drawn on img’, img)
+cv.imshow('Contours Drawn on img', img)
 # 標示 contours
 cv.drawContours(blank, contours, -1, (0,255,0), 1)
-cv.imshow(‘Contours Drawn on blank’, blank)
+cv.imshow('Contours Drawn on blank', blank)
 cv.waitKey(0)
 ```
 
@@ -132,7 +132,7 @@ cv.waitKey(0)
 ```py
 detector = cv2.FeatureDetector_create("FAST")
 kps = detector.detect(gray)
-print(“# of keypoints: {}".format(len(kps)))
+print("# of keypoints: {}".format(len(kps)))
 ```
 
 ### 通用影像分類器
